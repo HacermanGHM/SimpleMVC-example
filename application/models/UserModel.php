@@ -23,7 +23,7 @@ class UserModel extends Model
     /**
     * @var string роль пользователя
     */
-    protected $role = null;
+    public $role = null;
     
     public $email = null;
     
@@ -67,7 +67,7 @@ class UserModel extends Model
     
     public function update()
     {
-        $sql = "UPDATE $this->tableName SET timestamp=:timestamp, login=:login, pass=:pass, email=:email  WHERE id = :id";  
+        $sql = "UPDATE $this->tableName SET timestamp=:timestamp, login=:login, pass=:pass, role=:role, email=:email  WHERE id = :id";  
         $st = $this->pdo->prepare ( $sql );
         
         $st->bindValue( ":timestamp", (new \DateTime('NOW'))->format('Y-m-d H:i:s'), \PDO::PARAM_STMT);
@@ -80,7 +80,7 @@ class UserModel extends Model
         //$hashPass = password_hash($this->pass, PASSWORD_BCRYPT);
         $st->bindValue( ":pass", $this->pass, \PDO::PARAM_STR );
         
-        //$st->bindValue( ":role", $this->role, \PDO::PARAM_STR );
+        $st->bindValue( ":role", $this->role, \PDO::PARAM_STR );
         $st->bindValue( ":email", $this->email, \PDO::PARAM_STR );
         $st->bindValue( ":id", $this->id, \PDO::PARAM_INT );
         $st->execute();
