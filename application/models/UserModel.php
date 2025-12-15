@@ -135,4 +135,17 @@ class UserModel extends Model
 	return $st->fetch();
     }
 
+    // Получить статьи пользователя
+public function getArticles()
+{
+    $sql = "SELECT n.* FROM notes n 
+            JOIN article_authors aa ON n.id = aa.article_id 
+            WHERE aa.user_id = :user_id 
+            ORDER BY n.publicationDate DESC";
+    $st = $this->pdo->prepare($sql);
+    $st->bindValue(":user_id", $this->id, \PDO::PARAM_INT);
+    $st->execute();
+    return $st->fetchAll(\PDO::FETCH_OBJ);
+}
+
 }

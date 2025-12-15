@@ -78,15 +78,15 @@ h3.categoryDescription {
 }
 
 .pubDate {
-  font-size: .8em;
+  font-size: 1em;
   color: #eb6841;
   text-transform: uppercase;
 }
 
 #headlines .pubDate {
   display: inline-block;
-  width: 100px;
-  font-size: .5em;
+  width: 300px;
+  font-size: 1em;
   vertical-align: middle;
 }
 
@@ -105,7 +105,7 @@ h3.categoryDescription {
 .category {
   font-style: italic;
   font-weight: normal;
-  font-size: 60%;
+  font-size: 1em;
   color: #999;
   display: block;
   line-height: 2em;
